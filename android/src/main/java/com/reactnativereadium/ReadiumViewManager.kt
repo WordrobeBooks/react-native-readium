@@ -82,7 +82,7 @@ class ReadiumViewManager(
   }
 
   fun locationToLinkOrLocator(location: ReadableMap): LinkOrLocator? {
-    val json = JSONObject(location.toHashMap())
+    val json = JSONObject(location.toHashMap() as HashMap<*, *>)
     val hasLocations = json.has("locations")
     val hasChildren = json.has("children")
     val hasHashHref = (json.get("href") as String).contains("#")
@@ -114,7 +114,9 @@ class ReadiumViewManager(
 
   @ReactProp(name = "settings")
   fun setSettings(view: ReadiumView, settings: ReadableMap) {
-    view.updateSettingsFromMap(settings.toHashMap())
+    val map = mutableMapOf<String, Any>()
+    settings.toHashMap().forEach { (key, value) -> if (value != null) map[key] = value }
+    view.updateSettingsFromMap(map)
   }
 
   @ReactPropGroup(names = ["width", "height"], customType = "Style")

@@ -1,5 +1,24 @@
 # react-native-readium
 
+[![NPM version](https://img.shields.io/npm/v/react-native-readium.svg?color=success&label=npm%20package&logo=npm)](https://www.npmjs.com/package/react-native-readium)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+![This project is released under the MIT license](https://img.shields.io/badge/license-MIT-blue.svg)
+
+----
+
+## Have A Bug/Feature You Care About?
+
+We :heart: open source. We work on the things that are important to us when
+we're able to work on them. Have an issue you care about?
+
+- [Dive Into The Code!](CONTRIBUTING.md)
+- [Sponsor Your Issue](#sponsor-the-library)
+
+----
+
+## Overview
+
 A react-native wrapper for https://readium.org/. At a high level this package
 allows you to do things like:
 
@@ -13,7 +32,7 @@ allows you to do things like:
   - More (see the `Settings` documentation in the [API section](#api))
 - Etc. (read on for more details. :book:)
 
-## Overview
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -24,7 +43,7 @@ allows you to do things like:
 - [License](#license)
 
 | Dark Mode| Light Mode |
-|---|---|
+|----------|------------|
 | ![Dark Mode](https://github.com/5-stones/react-native-readium/blob/main/docs/demo-dark-mode.gif) | ![Light Mode](https://github.com/5-stones/react-native-readium/blob/main/docs/demo-light-mode.gif) |
 
 ## Installation
@@ -33,6 +52,8 @@ allows you to do things like:
 
 1. **iOS**: Requires an iOS target >= `13.0` (see the iOS section for more details).
 2. **Android**: Requires `compileSdkVersion` >= `31` (see the Android section for more details).
+
+:warning: This library does not current support `newArch`. Please disable `newArch` if you intend to use it. PR's welcome.
 
 #### Install Module
 
@@ -63,10 +84,11 @@ platform :ios, '13.0'
 target 'ExampleApp' do
   config = use_native_modules!
   ...
-  pod 'GCDWebServer', podspec: 'https://raw.githubusercontent.com/readium/GCDWebServer/3ec154d358f26858071feaa6429e0f1c16bb11bd/GCDWebServer.podspec', modular_headers: true
-  pod 'R2Shared', podspec: 'https://raw.githubusercontent.com/readium/swift-toolkit/2.4.0/Support/CocoaPods/ReadiumShared.podspec'
-  pod 'R2Streamer', podspec: 'https://raw.githubusercontent.com/readium/swift-toolkit/2.4.0/Support/CocoaPods/ReadiumStreamer.podspec'
-  pod 'R2Navigator', podspec: 'https://raw.githubusercontent.com/readium/swift-toolkit/2.4.0/Support/CocoaPods/ReadiumNavigator.podspec'
+  pod 'GCDWebServer', podspec: 'https://raw.githubusercontent.com/readium/GCDWebServer/3.7.5/GCDWebServer.podspec', modular_headers: true
+  pod 'R2Navigator', podspec: 'https://raw.githubusercontent.com/readium/swift-toolkit/2.6.0/Support/CocoaPods/ReadiumNavigator.podspec'
+  pod 'R2Shared', podspec: 'https://raw.githubusercontent.com/readium/swift-toolkit/2.6.0/Support/CocoaPods/ReadiumShared.podspec'
+  pod 'R2Streamer', podspec: 'https://raw.githubusercontent.com/readium/swift-toolkit/2.6.0/Support/CocoaPods/ReadiumStreamer.podspec'
+  pod 'ReadiumInternal', podspec: 'https://raw.githubusercontent.com/readium/swift-toolkit/2.6.0/Support/CocoaPods/ReadiumInternal.podspec'
   pod 'Minizip', modular_headers: true
   ...
 end
@@ -77,23 +99,6 @@ Finally, install the pods:
 `pod install`
 
 #### Android
-
-You might need to [add `jcenter` if you're getting a build failure on android](https://github.com/readium/kotlin-toolkit/issues/31):
-
-```groovy
-// android/build.gradle
-...
-
-allprojects {
-    repositories {
-        ...
-        // required by react-native-readium https://github.com/readium/kotlin-toolkit/issues/31
-        jcenter()
-    }
-    ...
-}
-...
-```
 
 If you're not using `compileSdkVersion` >= 31 you'll need to update that:
 
@@ -154,15 +159,25 @@ DRM is not supported at this time. However, there is a clear path to [support it
 | Name | Type | Optional | Description |
 |------|------|----------|-------------|
 | `file`     | [`File`](https://github.com/5-stones/react-native-readium/blob/main/src/interfaces/File.ts)               | :x:                | A file object containing the path to the eBook file on disk. |
-| `location` | [`Locator`](https://github.com/5-stones/react-native-readium/blob/main/src/interfaces/Locator.ts) | [`Link`](https://github.com/5-stones/react-native-readium/blob/main/src/interfaces/Link.ts)           | :white_check_mark: | A locator prop that allows you to externally control the location of the reader (e.g. Chapters or Bookmarks)|
+| `location` | [`Locator`](https://github.com/5-stones/react-native-readium/blob/main/src/interfaces/Locator.ts) \| [`Link`](https://github.com/5-stones/react-native-readium/blob/main/src/interfaces/Link.ts)           | :white_check_mark: | A locator prop that allows you to externally control the location of the reader (e.g. Chapters or Bookmarks). <br/><br/>:warning: If you want to set the `location` of an ebook on initial load, you should use the `File.initialLocation` property (look at the `file` prop). See more [here](https://github.com/5-stones/react-native-readium/issues/16#issuecomment-1344128937) |
 | `settings` | [`Partial<Settings>`](https://github.com/5-stones/react-native-readium/blob/main/src/interfaces/Settings.ts)  | :white_check_mark: | An object that allows you to control various aspects of the reader's UI (epub only) |
 | `style`    | `ViewStyle`          | :white_check_mark: | A traditional style object. |
 | `onLocationChange` | `(locator: Locator) => void` | :white_check_mark: | A callback that fires whenever the location is changed (e.g. the user transitions to a new page)|
 | `onTableOfContents` | `(toc: Link[] \| null) => void` | :white_check_mark: | A callback that fires once the file is parsed and emits the table of contents embedded in the file. Returns `null` or an empty `[]` if no TOC exists. See the [`Link`](https://github.com/5-stones/react-native-readium/blob/main/src/interfaces/Link.ts) interface for more info. |
 
+#### :warning: Web vs Native File URLs
+
+Please note that on `web` the `File.url` should be a web accessible URL path to
+the `manifest.json` of the unpacked epub. In native contexts it needs to be a
+local filepath to the epub file itself on disk. If you're not sure how to
+serve epub books [take a look at this example](https://github.com/d-i-t-a/R2D2BC/blob/production/examples/server.ts)
+which is based on the `dita-streamer-js` project (which is built on all the
+readium [r2-*-js](https://github.com/readium?q=js) libraries)
+
 ## Contributing
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the
+repository and the development workflow.
 
 ## Release
 
@@ -185,6 +200,10 @@ e.g.
 yarn version --new-version 1.2.17
 yarn version --patch // 1.2.17 -> 1.2.18
 ```
+
+## Sponsor The Library
+
+If you'd like to sponsor a specific feature, fix, or the library in general, please reach out on an issue and we'll have a conversation!
 
 ## License
 

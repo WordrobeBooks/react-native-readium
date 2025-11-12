@@ -1,3 +1,113 @@
+## [3.0.3](https://github.com/5-stones/react-native-readium/compare/v3.0.2...v3.0.3) (2025-08-11)
+
+
+### Bug Fixes
+
+* **web:** fix an issue causing web readers to crash due to CDN outage ([9bad0f8](https://github.com/5-stones/react-native-readium/commit/9bad0f822e2eaefcd567eed27cf6a4ed766fb757))
+
+
+
+## [3.0.2](https://github.com/5-stones/react-native-readium/compare/v3.0.1...v3.0.2) (2025-05-20)
+
+
+
+## [3.0.1](https://github.com/5-stones/react-native-readium/compare/v3.0.0...v3.0.1) (2025-03-05)
+
+
+### Bug Fixes
+
+* **android:** fix android build errors in newer versions of react-native ([487febb](https://github.com/5-stones/react-native-readium/commit/487febbb7ef7e16fc39db3594bbef10a61f28b07))
+
+
+
+# [3.0.0](https://github.com/5-stones/react-native-readium/compare/v2.0.2...v3.0.0) (2025-02-11)
+
+
+### Bug Fixes
+
+* **android:** remove tap toggles ui visibility ([81ca01a](https://github.com/5-stones/react-native-readium/commit/81ca01a4f38e2fb451023ce4aae31985f3613eb1))
+
+
+### BREAKING CHANGES
+
+* **android:** Tapping will no longer toggle the system ui visibility.
+
+
+
+## [2.0.2](https://github.com/5-stones/react-native-readium/compare/v2.0.1...v2.0.2) (2024-10-08)
+
+
+### Bug Fixes
+
+* **web:** Handle location not defined in reading order ([080b4a9](https://github.com/5-stones/react-native-readium/commit/080b4a911bea77ae174face2cf24b90ae0d58b32))
+
+
+
+## [2.0.1](https://github.com/5-stones/react-native-readium/compare/v2.0.0...v2.0.1) (2024-10-03)
+
+
+### Bug Fixes
+
+* **web:** estimate the totalProgression if it is not provided ([3d849dc](https://github.com/5-stones/react-native-readium/commit/3d849dc01cb23298acdfbfecead84c084bd4b1b2))
+
+
+
+# [2.0.0](https://github.com/5-stones/react-native-readium/compare/v2.0.0-rc.2...v2.0.0) (2024-09-10)
+
+
+### Bug Fixes
+
+* **web:** update reader when file url changes ([21eda29](https://github.com/5-stones/react-native-readium/commit/21eda2950ba01469220549387bbfc9f74b2e9047))
+
+
+
+# [2.0.0-rc.2](https://github.com/5-stones/react-native-readium/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2024-07-29)
+
+
+### Bug Fixes
+
+* **android:** don't set the brightness of the activity. instead rely on device/app settings ([8af916b](https://github.com/5-stones/react-native-readium/commit/8af916b86a3c42a9abc02a63aa239fa6e8c4e8a5))
+* **readiumview:** fix an issue when no forwardRef is passed on Android ([bbc1967](https://github.com/5-stones/react-native-readium/commit/bbc1967d0278db6ba1af4948f5afd67d2a4d12b5))
+* **ReadiumView:** fix react warning regarding forwardRefs ([45792e6](https://github.com/5-stones/react-native-readium/commit/45792e6f92e9526282c1fc2e6d5f8f57e199ecd7))
+
+
+
+# [2.0.0-rc.0](https://github.com/5-stones/react-native-readium/compare/v1.2.1...v2.0.0-rc.0) (2024-07-26)
+
+
+### Features
+
+* **android, example:** upgrade react-native support to 0.74.3 and android to kotlin-toolkit@2.4.1 ([1479382](https://github.com/5-stones/react-native-readium/commit/1479382214d1acd59d7f76690d933459c745c5c7))
+
+
+
+## [1.2.1](https://github.com/5-stones/react-native-readium/compare/v1.2.0...v1.2.1) (2023-05-10)
+
+
+### Bug Fixes
+
+* **web:** restructure reader imports in order to fix SSR ([37a2e6a](https://github.com/5-stones/react-native-readium/commit/37a2e6ae8380b902f8e2b38b46e027b1965bfde6))
+
+
+
+# [1.2.0](https://github.com/5-stones/react-native-readium/compare/v1.1.0...v1.2.0) (2022-12-14)
+
+
+### Features
+
+* **web:** remove next and previous buttons in favor of a ref api ([0e03366](https://github.com/5-stones/react-native-readium/commit/0e033667eef2abf06dfb949ef831b68f9dc51d2c))
+
+
+
+# [1.1.0](https://github.com/5-stones/react-native-readium/compare/v1.0.4...v1.1.0) (2022-12-10)
+
+
+### Features
+
+* **web:** add basic web implementation and example ([d55a457](https://github.com/5-stones/react-native-readium/commit/d55a457b71213de4536294709788b50b74076622))
+
+
+
 ## [1.0.4](https://github.com/5-stones/react-native-readium/compare/v1.0.3...v1.0.4) (2022-12-06)
 
 

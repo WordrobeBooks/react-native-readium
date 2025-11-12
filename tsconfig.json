@@ -4,24 +4,23 @@
     "paths": {
       "react-native-readium": ["./src/index"]
     },
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
     "esModuleInterop": true,
-    "importsNotUsedAsValues": "error",
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
-    "lib": ["esnext"],
-    "module": "esnext",
+    "isolatedModules": true,
+    "jsx": "react-native",
+    "lib": ["es2017", "DOM", "DOM.Iterable"],
     "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noImplicitUseStrict": false,
-    "noStrictGenericChecks": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
+    "outDir": "./lib",
     "strict": true,
-    "target": "esnext"
-  }
+    "target": "esnext",
+    "module": "esnext",
+    "skipLibCheck": true
+  },
+  "include": ["src", "dita.d.ts"],
+  "exclude": [
+    "**/__tests__/*",
+    "example"
+  ]
 }
