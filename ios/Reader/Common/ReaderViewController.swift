@@ -216,6 +216,10 @@ class ReaderViewController: UIViewController, Loggable {
 }
 
 extension ReaderViewController: NavigatorDelegate {
+  func navigator(_ navigator: SelectableNavigator, shouldShowMenuForSelection selection: Selection) -> Bool {
+    return false
+  }
+
   func navigator(_ navigator: Navigator, locationDidChange locator: Locator) {
     subject.send(locator)
     positionLabel.text = {
