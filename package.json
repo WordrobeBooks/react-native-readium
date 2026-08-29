@@ -147,7 +147,7 @@
     "useTabs": false
   },
   "dependencies": {
-    "@d-i-t-a/reader": "^2.1.4",
+    "@d-i-t-a/reader": "2.4.10",
     "use-deep-compare": "^1.1.0"
   },
   "engines": {
