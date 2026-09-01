@@ -1,3 +1,12 @@
+## [5.1.1](https://github.com/5-stones/react-native-readium/compare/v5.1.0...v5.1.1) (2026-09-01)
+
+
+### Bug Fixes
+
+* **web:** when zooming, maintain position and render all visible pages ([c871202](https://github.com/5-stones/react-native-readium/commit/c8712026c7f7795af5172ae80ccf97cc080c5506))
+
+
+
 # [5.1.0](https://github.com/5-stones/react-native-readium/compare/v5.0.0...v5.1.0) (2026-08-31)
 
 
